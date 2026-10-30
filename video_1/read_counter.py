@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Flash build/demo.bin, read `counter` for a few seconds, write counter.csv, plot counter.png.
 
-Run: python3 read_counter.py --host omniprobe-b07d80.local --seconds 5 --hz 20
+Run: python3 read_counter.py --host omniprobe-b07d80.local --seconds 5 --hz 5
 Needs: `make` done first, arm-none-eabi-nm on PATH, matplotlib, the `ohmic` Python binding.
 Pattern sources: Scout sdk/host/py README (ohmic.call), https://matplotlib.org/stable/gallery/lines_bars_and_markers/simple_plot.html,
 https://docs.python.org/3/library/csv.html, nm symbol lookup as in https://sourceware.org/binutils/docs/binutils/nm.html
