@@ -2,16 +2,16 @@
 # Uses arm-none-eabi-* from PATH, or: make TOOLCHAIN=/path/to/arm-none-eabi/bin
 PREFIX  := $(if $(TOOLCHAIN),$(TOOLCHAIN)/)arm-none-eabi-
 CFLAGS  := -mcpu=cortex-m3 -mthumb -g -O0 -Wall -Wextra -ffreestanding
-LDFLAGS := -Tlink.ld -nostdlib -Wl,-Map=build/blink.map
+LDFLAGS := -Tlink.ld -nostdlib -Wl,-Map=build/demo.map
 
-all: build/blink.bin
-	$(PREFIX)size build/blink.elf
+all: build/demo.bin
+	$(PREFIX)size build/demo.elf
 
-build/blink.elf: main.c link.ld
+build/demo.elf: main.c link.ld
 	mkdir -p build
 	$(PREFIX)gcc $(CFLAGS) main.c $(LDFLAGS) -o $@
 
-build/blink.bin: build/blink.elf
+build/demo.bin: build/demo.elf
 	$(PREFIX)objcopy -O binary $< $@
 
 clean:
