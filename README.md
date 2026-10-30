@@ -1,16 +1,23 @@
 # scout-bluepill-demo
 
-The most minimal STM32F103C8 Blue Pill blink: `main.c`, `link.ld`, `Makefile`.
-No CMSIS, no startup `.s`, no submodules. Start point for the Scout demo videos.
+STM32F103C8 Blue Pill demo code for the Scout demo videos. No CMSIS, no startup `.s`, no submodules.
 
-- `main.c`: vector table, reset handler, RCC/GPIOC registers, PC13 blink loop.
-- `link.ld`: flash at 0x08000000 (128 KB), RAM at 0x20000000 (20 KB).
-- `Makefile`: `make` builds `build/blink.elf` and `build/blink.bin`; `make clean`.
+## Layout
 
-Build with `arm-none-eabi-gcc` on PATH, or `make TOOLCHAIN=/path/to/arm-none-eabi/bin`.
-The build uses `-O0 -g` so globals stay visible in a debugger.
+- One self-contained, buildable folder per step.
+- `video_0/`: PC13 blink, 3 files (`main.c`, `link.ld`, `Makefile`). Start of video 1.
+- `video_1/`, `video_2/`, ...: each is a full copy of the previous folder plus that video's new code.
+- Copy one folder and build it; no folder needs files from another.
 
-Tags: `videoN-start`, `videoN-step-M`, `videoN-end`. Start of video 1: `video1-start`.
+## Build
+
+```
+cd video_0 && make
+```
+
+- `make` builds `build/blink.elf` and `build/blink.bin`; `make clean` removes them.
+- Use `arm-none-eabi-gcc` on PATH, or `make TOOLCHAIN=/path/to/arm-none-eabi/bin`.
+- The build uses `-O0 -g` so globals stay visible in a debugger.
 
 ## Sources and licenses
 
@@ -19,3 +26,5 @@ Tags: `videoN-start`, `videoN-step-M`, `videoN-end`. Start of video 1: `video1-s
 - Local changes: F103 memory map, Cortex-M3 flags, only two vector entries, register addresses from RM0008 instead of headers.
 
 MIT, see `LICENSE`.
+
+Made for Scout demo videos.
