@@ -1,0 +1,2 @@
+matplotlib
+# ohmic: Scout Python binding, built from sdk/host/py (maturin develop --release)
