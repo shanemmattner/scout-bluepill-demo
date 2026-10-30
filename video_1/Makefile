@@ -7,9 +7,9 @@ LDFLAGS := -Tlink.ld -nostdlib -Wl,-Map=build/demo.map
 all: build/demo.bin
 	$(PREFIX)size build/demo.elf
 
-build/demo.elf: main.c link.ld
+build/demo.elf: main.c startup_stm32f103xb.s link.ld
 	mkdir -p build
-	$(PREFIX)gcc $(CFLAGS) main.c $(LDFLAGS) -o $@
+	$(PREFIX)gcc $(CFLAGS) main.c startup_stm32f103xb.s $(LDFLAGS) -o $@
 
 build/demo.bin: build/demo.elf
 	$(PREFIX)objcopy -O binary $< $@
