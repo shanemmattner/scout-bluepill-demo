@@ -1,12 +1,14 @@
 # scout-bluepill-demo
 
-STM32F103C8 Blue Pill demo code for the Scout demo videos. ST's startup file (`startup_stm32f103xb.s`) for reset and vectors; no CMSIS headers, no submodules.
+STM32F103C8 Blue Pill demo code for the Scout demo videos. `video_*` use only ST's startup file (`startup_stm32f103xb.s`); `hal_mpu9250/` vendors ST's HAL and CMSIS headers (see its `THIRD_PARTY.md`). No submodules.
 
 ## Layout
 
 - One self-contained, buildable folder per step.
 - `video_0/`: minimal program, a global `counter` incremented in `while(1)`, no LED, 4 files (`main.c`, `startup_stm32f103xb.s`, `link.ld`, `Makefile`). Start of video 1.
 - `video_1/`: `video_0` plus `read_counter.py`: flash the binary, read `counter` for a few seconds through the Scout Python API, write `counter.csv`, plot `counter.png`.
+- `hal_mpu9250/start`: blank HAL blink (ST's HAL, PC13 LED), the start of the Scout HAL video. Builds with `make`; see `hal_mpu9250/README.md`.
+- `hal_mpu9250/end`: planned, the MPU-9250 `WHO_AM_I` read (0x71) over I2C.
 - `video_2/`, ...: each is a full copy of the previous folder plus that video's new code.
 - Copy one folder and build it; no folder needs files from another.
 
