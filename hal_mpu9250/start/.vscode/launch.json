@@ -1,0 +1,13 @@
+// Scout debug config (shape: Scout docs, "Debug": a type "scout" entry).
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Scout: Launch",
+      "type": "scout",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/blink.elf",
+      "runToEntryPoint": "main"
+    }
+  ]
+}

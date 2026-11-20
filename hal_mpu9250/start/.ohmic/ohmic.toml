@@ -1,0 +1,11 @@
+version = 1
+
+[target]
+chip = "stm32f103c8"
+elf = "build/blink.elf"
+flash_algorithm = "stm32f103c8.json"
+# register file for the Peripherals view
+svd = ".ohmic/STM32F103.svd"
+
+[probe]
+name = ""
